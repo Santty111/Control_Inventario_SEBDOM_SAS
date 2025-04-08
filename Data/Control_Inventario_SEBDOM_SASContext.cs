@@ -15,5 +15,6 @@ namespace Control_Inventario_SEBDOM_SAS.Data
         }
 
         public DbSet<Control_Inventario_SEBDOM_SAS.Models.Inventario> Inventario { get; set; } = default!;
+        public DbSet<Control_Inventario_SEBDOM_SAS.Models.Balance> Balance { get; set; } = default!;
     }
 }

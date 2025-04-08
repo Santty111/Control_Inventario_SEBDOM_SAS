@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Control_Inventario_SEBDOM_SAS.Models.Balance>
+
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<h1>Productos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nuevo Producto</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Nombre Producto</th>
+            <th>Entrada</th>
+            <th>Salida</th>
+            <th>Stock Actual</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <form asp-action="Edit" method="post">
+                    @Html.Hidden("Id", item.Id)
+                <td>@item.NombreProducto</td>
+                <td>
+                    <input type="number" name="Entrada" value="@item.Entrada" class="form-control" style="background-color: #d0ecff;" />
+                </td>
+                <td>
+                    <input type="number" name="Salida" value="@item.Salida" class="form-control" style="background-color: #ffd6f0;" />
+                </td>
+                <td>
+                    <strong>@item.StockActual</strong>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-sm btn-success">Guardar</button> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+                </form>
+            </tr>
+        }
+    </tbody>
+</table>
