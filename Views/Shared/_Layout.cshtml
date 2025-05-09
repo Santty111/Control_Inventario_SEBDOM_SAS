@@ -20,9 +20,6 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Inventarios" asp-action="Index">Inventarios</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Balances" asp-action="Index">Balances</a>
                         </li>
                             
@@ -37,11 +34,16 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Control_Inventario_SEBDOM_SAS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    @* 👇 Solo muestra el footer si NO estás en Home/Index *@
+    @if (!(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home"
+    && ViewContext.RouteData.Values["Action"]?.ToString() == "Index"))
+    {
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2025 - Control_Inventario_SEBDOM_SAS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+    }
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
